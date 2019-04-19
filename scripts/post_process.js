@@ -20,6 +20,17 @@ post_process.copy_config_js = function (){
 };
 
 /**
+ * 拷贝imdex.html
+ */
+post_process.copy_html = function (){
+    let src_file = fs.readFileSync(__dirname + '/../config/img/' + utils.query_pars.title + "/index.html", 'utf-8');
+    let dst_file = utils.PROJECT_PATH + 'build-templates/web-mobile/index.html';
+    fs.writeFileSync(dst_file, src_file,  'utf-8');
+    utils.info(`=======>拷贝 ${utils.query_pars.title} index.html 文件`);
+    return `=======>拷贝 ${utils.query_pars.title} index.html 文件 \n`;
+};
+
+/**
  * 拷贝图片资源
  */
 post_process.copy_img = function (){
@@ -54,6 +65,7 @@ post_process.copy_img = function (){
 post_process.run = function (config_file,_cb) {
     // let _config = JSON.parse(fs.readFileSync(__dirname + '/../config/' + config_file));
     let msg = "";
+    msg += this.copy_html();
     msg += this.copy_config_js();
     msg += this.copy_img();
     msg += "=======>打包前期处理工作完成 \n";

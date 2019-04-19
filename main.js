@@ -88,8 +88,8 @@ let main = function (_cb) {
                     (_msg)=> {
                         //finish
                         msg += _msg;
-                        utils.info(">>>>>>>>>>>>" + op_info.name + "执行成功");
-                        msg += "\n>>>>>>>>>>>>" + op_info.name + "执行成功";
+                        utils.info(">>>>>>>>>>>>" + op_info.name + "执行"+utils.query_pars.title + "_" + utils.query_pars.platform+"成功");
+                        msg += "\n>>>>>>>>>>>>" + op_info.name + "执行"+utils.query_pars.title + "_" + utils.query_pars.platform+"成功";
                         _cb & _cb(msg);
                     },
                     (_msg)=> {
